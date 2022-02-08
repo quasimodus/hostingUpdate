@@ -14,7 +14,7 @@ echo -en "\033[0m\n"
 
 while ! ping -c1 $ServerUrl &>/dev/null
 do    
-    echo -en "\033[37;1;31m ---> Host not Found - `date` \033[0m\n"
+    echo -en "\033[37;1;31m ---> Host not Found - `date` \033[0m\n\n\n"
     exit 1
 done
 
@@ -65,5 +65,6 @@ do
     sleep .05
 done
 echo -en "\033[0m\n"
-echo -ne "\n\033[37;1;5;31m ---> Ну нафик, лучше к Лёне!!! \033[0m\n\n"
+echo -ne "\n\033[37;1;5;31m ---> Ну нафик, лучше к Лёне!!! \033[0m\n\n\n"
 
+# end
