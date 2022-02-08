@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# variables
+# variables =========================
 c=15  # connection time
 p=15  # preparing time update
 u=100 # update time
@@ -10,7 +10,7 @@ echo -e "\033[36m"
 read -p "Enter URL:  " ServerUrl
 echo -en "\033[0m\n"
 
-# ping ==========================
+# ping ==============================
 
 while ! ping -c1 $ServerUrl &>/dev/null
 do    
@@ -22,12 +22,13 @@ echo -en "\033[37;32m ---> Host Found - `date` \033[0m\n"
 
 # Connection ========================
 echo -e "\n\033[36m"
-echo "Connection to:   ${ServerUrl}"
+echo "Connection to: ${ServerUrl}"
 
 # Connection progress bar
 j=1
 sp="/-\|"
 echo -n ' '
+
 while [ $j -lt $c ]
 do
     printf "\b${sp:j++%${#sp}:1}"
@@ -64,7 +65,8 @@ do
     printf "${sp%${#sp}:1}"
     sleep .05
 done
+
 echo -en "\033[0m\n"
 echo -ne "\n\033[37;1;5;31m ---> Ну нафик, лучше к Лёне!!! \033[0m\n\n\n"
 
-# end
+# the end
