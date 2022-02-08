@@ -6,28 +6,19 @@ p=15  # preparing time update
 u=100 # update time
 
 # Enter URL  ========================
-echo -e "\033[32m\033[1m"
-echo "Enter URL: "
-echo -e "\033[0m"
-
-
-read -p "Enter URL: " ServerUrl
-
-
-# check url ==========================
+echo -e "\033[36m"
+read -p "Enter URL:  " ServerUrl
+echo -en "\033[0m\n"
 
 # ping ==========================
+
 while ! ping -c1 $ServerUrl &>/dev/null
 do    
-    echo -e "\033[31m\033[1m"
-    echo "  Host not Found - `date`"
-    echo -e "\033[0m"
+    echo -en "\033[37;1;31m ---> Host not Found - `date` \033[0m\n"
     exit 1
 done
-echo -e "\033[36m\033[1m"
-echo "Host Found - `date`"
-echo -e "\033[0m"
 
+echo -en "\033[37;32m ---> Host Found - `date` \033[0m\n"
 
 # Connection ========================
 echo -e "\n\033[36m"
@@ -42,14 +33,13 @@ do
     printf "\b${sp:j++%${#sp}:1}"
     sleep .5
 done
-echo -e "\033[32m\033[1m"
-echo "...Done"
-echo -e "\033[0m"
+
+echo -ne "\n\033[37;32m ---> Done \033[0m\n"
 sleep 1
 
 # Preparing Update ===================
 echo -e "\n\033[36m"
-echo 'Preparing Update...'
+echo 'Preparing Update:'
 j=1
 sp="/-\|"
 
@@ -58,17 +48,15 @@ do
     printf "\b${sp:j++%${#sp}:1}"
     sleep .5
 done
-echo -e "\033[32m\033[1m"
-echo "...Done"
-echo -e "\033[0m"
 
+echo -ne '\n'
+echo -ne "\033[37;32m ---> Done \033[0m\n\n\n"
 sleep 1
 
 # Update =============================
 i=1
 sp="▇"
-echo -e "\n\033[36m"
-echo 'Update...'
+echo -ne '\033[37;36m Update... \n'
 echo -n '|'
 
 for ((i=1; i < $u;i++))
@@ -76,10 +64,6 @@ do
     printf "${sp%${#sp}:1}"
     sleep .05
 done
+echo -en "\033[0m\n"
+echo -ne "\n\033[37;1;5;31m ---> Ну нафик, лучше к Лёне!!! \033[0m\n\n"
 
-echo -ne '\n'
-echo -e "\033[31m\033[1m\033[5m"
-echo " -Ну нафик, лучше к Лёне!!!"
-echo -e "\033[0m"
-#echo -ne '***************************'
-echo -ne '\n'
